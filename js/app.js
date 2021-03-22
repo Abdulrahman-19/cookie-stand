@@ -1,16 +1,16 @@
 'use strict';
 
+let WorkHour = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
 const Seattle = {
   Name : 'Seattle',
   minimum: 23,
   maximum: 65,
   NumOfCost : [] ,
-  WorkHour: ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'],
   avrNumOfCockies : 6.3 ,
   summation : 0,
   getNumOfCost : function(){
-    for(let i =0;i<this.WorkHour.length;i++){
-      this.NumOfCost.push(Math.floor(getNumOfCookies()*this.avrNumOfCockies));
+    for(let i =0;i<WorkHour.length;i++){
+      this.NumOfCost.push(Math.floor(getNumOfCookies(this.minimum,this.maximum)*this.avrNumOfCockies));
       this.summation += this.NumOfCost[i];
     }
   },
@@ -23,10 +23,10 @@ const Seattle = {
     h2El.textContent = this.Name;
     const ulEl = document.createElement('ul');
     countainer.appendChild(ulEl);
-    for (let i = 0; i< this.WorkHour.length;i++){
+    for (let i = 0; i< WorkHour.length;i++){
       const liEl = document.createElement('li');
       ulEl.appendChild(liEl);
-      liEl.textContent = `${this.WorkHour[i]} : ${this.NumOfCost[i]}`;
+      liEl.textContent = `${WorkHour[i]} : ${this.NumOfCost[i]} cookies`;
     }
     const liEl = document.createElement('li');
     ulEl.appendChild(liEl);
@@ -34,23 +34,23 @@ const Seattle = {
   }
 };
 
-function getNumOfCookies (){
-  return Math.floor(Math.random()*(Seattle.maximum-Seattle.minimum+1)+Seattle.minimum);
+function getNumOfCookies (min,max){
+  let l= Math.round(Math.random() * (max - min)) + min;
+  return l;
 }
 Seattle.getNumOfCost();
 Seattle.render();
 
-const Tokyo = {
+const tokyo = {
   Name : 'Tokyo',
   minimum: 3,
   maximum: 24,
-  summation : 0,
   NumOfCost : [] ,
-  WorkHour: ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'],
   avrNumOfCockies : 1.2 ,
+  summation : 0,
   getNumOfCost : function(){
-    for(let i =0;i<this.WorkHour.length;i++){
-      this.NumOfCost.push(Math.floor(getNumOfCookies1()*this.avrNumOfCockies));
+    for(let i =0;i<WorkHour.length;i++){
+      this.NumOfCost.push(Math.floor(getNumOfCookies(this.minimum,this.maximum)*this.avrNumOfCockies));
       this.summation += this.NumOfCost[i];
     }
   },
@@ -63,10 +63,10 @@ const Tokyo = {
     h2El.textContent = this.Name;
     const ulEl = document.createElement('ul');
     countainer.appendChild(ulEl);
-    for (let i = 0; i< this.WorkHour.length;i++){
+    for (let i = 0; i< WorkHour.length;i++){
       const liEl = document.createElement('li');
       ulEl.appendChild(liEl);
-      liEl.textContent = `${this.WorkHour[i]} : ${this.NumOfCost[i]}`;
+      liEl.textContent = `${WorkHour[i]} : ${this.NumOfCost[i]} cookies`;
     }
     const liEl = document.createElement('li');
     ulEl.appendChild(liEl);
@@ -74,24 +74,19 @@ const Tokyo = {
   }
 };
 
+tokyo.getNumOfCost();
+tokyo.render();
 
-function getNumOfCookies1(){
-  return Math.floor(Math.random()*(Tokyo.maximum-Tokyo.minimum+1)+Tokyo.minimum);
-}
-Tokyo.getNumOfCost();
-Tokyo.render();
-
-const Dubai = {
+const dubai= {
   Name : 'Dubai',
   minimum: 11,
   maximum: 38,
-  summation : 0,
   NumOfCost : [] ,
-  WorkHour: ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'],
   avrNumOfCockies : 3.7 ,
+  summation : 0,
   getNumOfCost : function(){
-    for(let i =0;i<this.WorkHour.length;i++){
-      this.NumOfCost.push(Math.floor(getNumOfCookies2()*this.avrNumOfCockies));
+    for(let i =0;i<WorkHour.length;i++){
+      this.NumOfCost.push(Math.floor(getNumOfCookies(this.minimum,this.maximum)*this.avrNumOfCockies));
       this.summation += this.NumOfCost[i];
     }
   },
@@ -104,10 +99,10 @@ const Dubai = {
     h2El.textContent = this.Name;
     const ulEl = document.createElement('ul');
     countainer.appendChild(ulEl);
-    for (let i = 0; i< this.WorkHour.length;i++){
+    for (let i = 0; i< WorkHour.length;i++){
       const liEl = document.createElement('li');
       ulEl.appendChild(liEl);
-      liEl.textContent = `${this.WorkHour[i]} : ${this.NumOfCost[i]}`;
+      liEl.textContent = `${WorkHour[i]} : ${this.NumOfCost[i]} cookies`;
     }
     const liEl = document.createElement('li');
     ulEl.appendChild(liEl);
@@ -115,24 +110,19 @@ const Dubai = {
   }
 };
 
+dubai.getNumOfCost();
+dubai.render();
 
-function getNumOfCookies2(){
-  return Math.floor(Math.random()*(Dubai.maximum-Dubai.minimum+1)+Dubai.minimum);
-}
-Dubai.getNumOfCost();
-Dubai.render();
-
-const Paris = {
+const paris = {
   Name : 'Paris',
-  minimum: 11,
+  minimum: 20,
   maximum: 38,
-  summation : 0,
   NumOfCost : [] ,
-  WorkHour: ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'],
-  avrNumOfCockies : 3.7 ,
+  avrNumOfCockies : 2.3 ,
+  summation : 0,
   getNumOfCost : function(){
-    for(let i =0;i<this.WorkHour.length;i++){
-      this.NumOfCost.push(Math.floor(getNumOfCookies3()*this.avrNumOfCockies));
+    for(let i =0;i<WorkHour.length;i++){
+      this.NumOfCost.push(Math.floor(getNumOfCookies(this.minimum,this.maximum)*this.avrNumOfCockies));
       this.summation += this.NumOfCost[i];
     }
   },
@@ -145,10 +135,10 @@ const Paris = {
     h2El.textContent = this.Name;
     const ulEl = document.createElement('ul');
     countainer.appendChild(ulEl);
-    for (let i = 0; i< this.WorkHour.length;i++){
+    for (let i = 0; i< WorkHour.length;i++){
       const liEl = document.createElement('li');
       ulEl.appendChild(liEl);
-      liEl.textContent = `${this.WorkHour[i]} : ${this.NumOfCost[i]}`;
+      liEl.textContent = `${WorkHour[i]} : ${this.NumOfCost[i]} cookies`;
     }
     const liEl = document.createElement('li');
     ulEl.appendChild(liEl);
@@ -156,24 +146,19 @@ const Paris = {
   }
 };
 
+paris.getNumOfCost();
+paris.render();
 
-function getNumOfCookies3(){
-  return Math.floor(Math.random()*(Paris.maximum-Paris.minimum+1)+Paris.minimum);
-}
-Paris.getNumOfCost();
-Paris.render();
-
-const Lima = {
+const lima = {
   Name : 'Lima',
   minimum: 2,
   maximum: 16,
-  summation : 0,
   NumOfCost : [] ,
-  WorkHour: ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'],
   avrNumOfCockies : 4.6 ,
+  summation : 0,
   getNumOfCost : function(){
-    for(let i =0;i<this.WorkHour.length;i++){
-      this.NumOfCost.push(Math.floor(getNumOfCookies4()*this.avrNumOfCockies));
+    for(let i =0;i<WorkHour.length;i++){
+      this.NumOfCost.push(Math.floor(getNumOfCookies(this.minimum,this.maximum)*this.avrNumOfCockies));
       this.summation += this.NumOfCost[i];
     }
   },
@@ -186,10 +171,10 @@ const Lima = {
     h2El.textContent = this.Name;
     const ulEl = document.createElement('ul');
     countainer.appendChild(ulEl);
-    for (let i = 0; i< this.WorkHour.length;i++){
+    for (let i = 0; i< WorkHour.length;i++){
       const liEl = document.createElement('li');
       ulEl.appendChild(liEl);
-      liEl.textContent = `${this.WorkHour[i]} : ${this.NumOfCost[i]}`;
+      liEl.textContent = `${WorkHour[i]} : ${this.NumOfCost[i]} cookies`;
     }
     const liEl = document.createElement('li');
     ulEl.appendChild(liEl);
@@ -197,9 +182,5 @@ const Lima = {
   }
 };
 
-
-function getNumOfCookies4(){
-  return Math.floor(Math.random()*(Lima.maximum-Lima.minimum+1)+Lima.minimum);
-}
-Lima.getNumOfCost();
-Lima.render();
+lima.getNumOfCost();
+lima.render();
