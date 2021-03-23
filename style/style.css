@@ -23,3 +23,32 @@ table{
       color: white;
   
     }
+    h1 {
+      font-family: cursive;
+      color: burlywood;
+  }
+  
+  nav ul li{
+      display: inline-block;
+      list-style: none;
+      margin-right: 20px;
+      text-decoration: none;
+  }
+  #family img {
+      width: 50%;
+      margin-left: 478px;
+      display: inline-block;
+  }
+  div#location {
+      font-size: 17px;
+      font-family: cursive;
+      color: burlywood;
+  }
+  h3 {
+      color: brown;
+      font-family: cursive;
+  }
+  footer {
+      color: brown;
+      font-family: cursive;
+  }

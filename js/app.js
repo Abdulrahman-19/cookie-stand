@@ -2,7 +2,7 @@
 
 let WorkHour = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
 let tableEl= document.createElement('table');
-let totalArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let totalArray = [];
 function Place(Name,minimum,maximum,avrNumOfCockies){
   this.Name = Name;
   this.minimum = minimum;
@@ -19,48 +19,30 @@ function getNumOfCookies (min,max){
 
 Place.prototype.getNumOfCost =function(){
   for(let i =0;i<WorkHour.length;i++){
-    this.NumOfCost.push(Math.floor(getNumOfCookies(this.minimum,this.maximum)*this.avrNumOfCockies));
+    let numOfCookiesPerHour = Math.floor(getNumOfCookies(this.minimum,this.maximum)*this.avrNumOfCockies);
+    this.NumOfCost.push(numOfCookiesPerHour);
     this.summation += this.NumOfCost[i];
   }
 };
-
 Place.prototype.render = function(){
   let trEl = '';
   trEl = document.createElement('tr');
   tableEl.appendChild(trEl);
   let tdEl = document.createElement('td');
   trEl.appendChild(tdEl);
+  tdEl.textContent = this.Name;
   for (let i = 0; i<= WorkHour.length;i++){
     tdEl = document.createElement('td');
     trEl.appendChild(tdEl);
-    // trEl.appendChild('tdEl');
     tdEl.textContent = `${this.NumOfCost[i]}`;
   }
 
   tdEl.textContent = this.summation;
 
 
-
-
-  // const headerRowEl = document.createElement('tr');
-  // tableEl.appendChild(headerRowEl);
-  // for (let i = 0; i< WorkHour.length;i++){
-  //   const headerRowEl = document.createElement('tr');
-  //   tableEl.appendChild(headerRowEl);
-  //   const thEl = document.createElement('th');
-  //   headerRowEl.appendChild(thEl);
-  //   thEl.textContent = `${WorkHour[i]}`;
-  // }
-  // for (let i = 0; i< WorkHour.length;i++){
-  //   const tdEl = document.createElement('td');
-  //   tableEl.appendChild(tdEl);
-  //   tdEl.textContent = `${this.NumOfCost[i]}`;
-  // }
- 
 };
 let tableHeader = function () {
   let divEl = document.getElementById('sales');
-  // tableEl.className = 'table';
   divEl.append(tableEl);
   let tableRow = document.createElement('tr');
   tableEl.appendChild(tableRow);
@@ -74,7 +56,6 @@ let tableHeader = function () {
   tableHead.textContent = 'Daily Location Total';
   tableRow.appendChild(tableHead);
 };
-
 
 let tableFooter = function () {
   let divEl = document.getElementById('sales');
@@ -93,11 +74,11 @@ let tableFooter = function () {
     tableHead.textContent = totalArray[i];
     if (i < totalArray.length) {
       dailyLocationTotal += totalArray[i];
-
     }
   }
   tableHead.textContent = dailyLocationTotal;
   tableRow.appendChild(tableHead);
+
 
 };
 tableHeader();
