@@ -5,6 +5,7 @@ let tableEl= document.createElement('table');
 let totalArray = [];
 let footerArray =[];
 let totalOfTotal=0;
+let Places = [];
 function Place(Name,minimum,maximum,avrNumOfCockies){
   this.Name = Name;
   this.minimum = minimum;
@@ -13,6 +14,7 @@ function Place(Name,minimum,maximum,avrNumOfCockies){
   this.NumOfCost=[];
   this.summation = 0;
   totalArray.push(this);
+  Places.push(this);
 
 }
 function getNumOfCookies (min,max){
@@ -63,11 +65,11 @@ let tableHeader = function () {
 
 let tableFooter = function () {
   let divEl = document.getElementById('sales');
-  // tableEl.setAttribute('id','table');
+  tableEl.setAttribute('id','table');
   divEl.append(tableEl);
   let tableRow = document.createElement('tr');
   tableEl.appendChild(tableRow);
-  // tableRow.setAttribute('id','total');
+  tableRow.setAttribute('id','total');
   let tableHead = document.createElement('th');
   tableRow.appendChild(tableHead);
   tableHead.textContent = 'Totals';
@@ -80,7 +82,6 @@ let tableFooter = function () {
     tableHead = document.createElement('th');
     tableRow.appendChild(tableHead);
     tableHead.textContent = dailyLocationTotal;
-    
   }
   // footerArray.pop();
   // let th3El = document.createElement('th');
@@ -113,4 +114,24 @@ const lima = new Place('Lima',2,16,4.6);
 lima.getNumOfCost();
 lima.render();
 
+
+
+let myForm = document.getElementById('placeForm');
+// let placeSection = document.getElementById('sales');
+
+myForm.addEventListener('submit',addNewPlace);
+function addNewPlace(event){
+  event.preventDefault();
+  let place = event.target.name.value;
+  let maxNum = event.target.maximum.value;
+  let minNum = event.target.minimum.value;
+  let AvrNumPerCust = parseFloat(event.target.avrnumofcustomer.value);
+  let newPlace = new Place(place,minNum,maxNum,AvrNumPerCust);
+  newPlace.getNumOfCost();
+  newPlace.render();
+  let table= document.getElementById('table');
+  let tableTotal  =document.getElementById('total');
+  table.removeChild(tableTotal);
+  tableFooter();
+}
 tableFooter();
