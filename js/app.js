@@ -3,6 +3,8 @@
 let WorkHour = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
 let tableEl= document.createElement('table');
 let totalArray = [];
+let footerArray =[];
+let totalOfTotal=0;
 function Place(Name,minimum,maximum,avrNumOfCockies){
   this.Name = Name;
   this.minimum = minimum;
@@ -10,6 +12,7 @@ function Place(Name,minimum,maximum,avrNumOfCockies){
   this.avrNumOfCockies = avrNumOfCockies;
   this.NumOfCost=[];
   this.summation = 0;
+  totalArray.push(this);
 
 }
 function getNumOfCookies (min,max){
@@ -57,28 +60,39 @@ let tableHeader = function () {
   tableRow.appendChild(tableHead);
 };
 
+
 let tableFooter = function () {
   let divEl = document.getElementById('sales');
-  tableEl.setAttribute('id','table');
+  // tableEl.setAttribute('id','table');
   divEl.append(tableEl);
   let tableRow = document.createElement('tr');
   tableEl.appendChild(tableRow);
-  tableRow.setAttribute('id','total');
+  // tableRow.setAttribute('id','total');
   let tableHead = document.createElement('th');
   tableRow.appendChild(tableHead);
   tableHead.textContent = 'Totals';
-  let dailyLocationTotal = 0;
-  for (let i = 0; i <= totalArray.length; i++) {
+  for (let i = 0; i < WorkHour.length; i++) {
+    let dailyLocationTotal = 0;
+    for (let j=0; j<totalArray.length;j++ ){
+      dailyLocationTotal+= totalArray[j].NumOfCost[i];
+    }
+    footerArray.push(dailyLocationTotal);
     tableHead = document.createElement('th');
     tableRow.appendChild(tableHead);
-    tableHead.textContent = totalArray[i];
-    if (i < totalArray.length) {
-      dailyLocationTotal += totalArray[i];
-    }
+    tableHead.textContent = dailyLocationTotal;
+    
   }
-  tableHead.textContent = dailyLocationTotal;
-  tableRow.appendChild(tableHead);
-
+  // footerArray.pop();
+  // let th3El = document.createElement('th');
+  // tableRow.appendChild(th3El);
+  // th3El.textContent = totalOfTotal;
+  for(let i=0;i<footerArray.length;i++){
+    totalOfTotal+=footerArray[i];
+  }
+  console.log(totalOfTotal);
+  let thEl = document.createElement('th');
+  tableRow.appendChild(thEl);
+  thEl.textContent = totalOfTotal;
 
 };
 tableHeader();
