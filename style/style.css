@@ -19,13 +19,13 @@ table{
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      background-color: #4CAF50;
+      background-color: #f5c0c0;
       color: white;
   
     }
     h1 {
       font-family: cursive;
-      color: burlywood;
+      color: #ff7171;
   }
   
   nav ul li{
@@ -42,13 +42,66 @@ table{
   div#location {
       font-size: 17px;
       font-family: cursive;
-      color: burlywood;
+      color: #9fd8df;
   }
   h3 {
-      color: brown;
+      color: #ff7171;
       font-family: cursive;
   }
   footer {
-      color: brown;
+      color: #ff7171;
       font-family: cursive;
   }
+  img#family {
+    width: 200px;
+}
+img#good {
+  margin-left: 20%;
+  margin-bottom: 20px;
+}
+body{
+  background-color: #f0e4d7;
+}
+div#images {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img#images {width: 100%}
+
+div.container {
+  text-align: center;
+  padding: 10px 20px;
+}
+div#images {
+  margin-left: 13%;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ff7171;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #f0e4d7;
+}
+h2 {
+  color: #ff7171;
+  font-family: cursive;
+}
