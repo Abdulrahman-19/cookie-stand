@@ -125,7 +125,7 @@ function addNewPlace(event){
   let place = event.target.name.value;
   let maxNum = event.target.maximum.value;
   let minNum = event.target.minimum.value;
-  let AvrNumPerCust = parseFloat(event.target.avrnumofcustomer.value);
+  let AvrNumPerCust = Number(event.target.avrnumofcustomer.value);
   let newPlace = new Place(place,minNum,maxNum,AvrNumPerCust);
   newPlace.getNumOfCost();
   newPlace.render();
